@@ -19,6 +19,7 @@ void ATankPlayerController::BeginPlay()
 void ATankPlayerController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	AimTowardsCrosshair();
 }
 
 void ATankPlayerController::AimTowardsCrosshair()
@@ -27,11 +28,25 @@ void ATankPlayerController::AimTowardsCrosshair()
 	if (!GetControlledTank())
 	{
 		return;
-		
+	
 		//Get world location if line trace though cross hair 
 		//If it hits the landscape
 		//Tell controlled tank to aim at this point
 	}
+	FVector HitLocation; //out parameter
+	if (GetSightRayHitLocation(HitLocation))
+	{
+		
+		UE_LOG(LogTemp, Warning, TEXT("HitLocation: %s"), *HitLocation.ToString());
+	}
+
+}
+
+bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
+{
+
+	OutHitLocation = FVector(1.0);
+	return true;
 }
 
 
@@ -40,6 +55,8 @@ ATank* ATankPlayerController::GetControlledTank() const
 	return Cast<ATank>(GetPawn());
 	
 }
+
+
 
 
 

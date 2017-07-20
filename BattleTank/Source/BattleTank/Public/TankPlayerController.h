@@ -13,7 +13,11 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
-	
+
+private:
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+
+
 public:
 	ATank* GetControlledTank() const;
 
@@ -24,4 +28,6 @@ public:
 	//Start the tank moving the barrel so that a shot would it where the cross hair
 	//intersects the world.
 	void AimTowardsCrosshair();
+	
+	
 };
