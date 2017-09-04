@@ -15,6 +15,7 @@ void ATankAIController::BeginPlay()
 	}
 	else
 		UE_LOG(LogTemp, Warning, TEXT("AIController  found player %s"), *(PlayerTank->GetName()));
+
 }
 
 
@@ -36,6 +37,11 @@ ATank* ATankAIController :: GetPlayerTank() const
 	return Cast<ATank>(PlayerPawn);
 
 }
+
+
+
+
+
 
 
 

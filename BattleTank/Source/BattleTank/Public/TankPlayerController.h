@@ -32,6 +32,9 @@ private:
 	//Start the tank moving the barrel so that a shot would it where the cross hair
 	//intersects the world.
 	void AimTowardsCrosshair();
+
+
+	bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 	
 	
 };

@@ -21,6 +21,10 @@ public:
 
 	ATank* GetPlayerTank() const;
 
+	bool DeprojectScreenPositionToWorld();
+	
+
+
 
 	
 	
