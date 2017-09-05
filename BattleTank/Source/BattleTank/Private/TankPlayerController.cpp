@@ -1,8 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+
 #include "BattleTank.h"
 #include "TankPlayerController.h"
 #include "../Public/TankPlayerController.h"
+
 
 void ATankPlayerController::BeginPlay()
 {
@@ -42,7 +44,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 }
 
-bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
+bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 {
 	int32 ViewportSizeX, ViewportSizeY;
 
@@ -54,11 +56,32 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
 
 	if (GetLookDirection(ScreenLocation, LookDirection))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s"), *LookDirection.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s"), *LookDirection.ToString());
+		GetLookVectorHitLocation(LookDirection, HitLocation);
+		UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s"), *HitLocation.ToString());
+
+
+	}
+	
+	return true;
+}
+
+bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const
+{
+	FHitResult HitResult;
+	auto StartLocation = PlayerCameraManager->GetCameraLocation();
+	auto EndLocation = StartLocation + (LookDirection * LineTraceRange);
+
+	if (GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECollisionChannel::ECC_Visibility))
+	{
+		HitLocation = HitResult.Location;
+		return true;
 	}
 
+	HitLocation = FVector(0);
+	return false;
 
-	return true;
+	//bool UWorld::LineTraceSingleByChannel(struct FHitResult & OutHit, const FVector & Start, const FVector & End, ECollisionChannel TraceChannel, const FCollisionQueryParams & Params, const FCollisionResponseParams & ResponseParam); (Questo è quello che ho scritto io) !!!! da tenere a mente ! 
 }
 
 bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const {
@@ -73,6 +96,8 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& 
 	
 	
 }
+
+
 
 
 ATank* ATankPlayerController::GetControlledTank() const
