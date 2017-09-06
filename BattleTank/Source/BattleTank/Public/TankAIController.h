@@ -23,6 +23,7 @@ public:
 
 	bool DeprojectScreenPositionToWorld();
 	
+	virtual void Tick(float DeltaSeconds) override;
 
 
 
