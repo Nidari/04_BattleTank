@@ -22,9 +22,6 @@ protected:
 
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
-
-
-
 private:
 	// Sets default values for this pawn's properties
 	ATank();
@@ -39,6 +36,10 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
 	UStaticMeshComponent* Barrel = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = firing)
+		float launchSpped = 100000; // sensible start value of 10000/ms
+
 
 	
 	
