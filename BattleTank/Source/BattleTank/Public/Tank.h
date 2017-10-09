@@ -38,7 +38,7 @@ private:
 	UStaticMeshComponent* Barrel = nullptr;
 
 	UPROPERTY(EditAnywhere, Category = firing)
-		float launchSpped = 100000; // sensible start value of 10000/ms
+		float LaunchSpeed = 100000; // sensible starting value of 10000/ms
 
 
 	
