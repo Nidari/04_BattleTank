@@ -19,7 +19,7 @@ ATank::ATank()
 
 void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
-	TankAimingComponent->SetBarrelReference(BarrelToSet);
+  	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
 
 
