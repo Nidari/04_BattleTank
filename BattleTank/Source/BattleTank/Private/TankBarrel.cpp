@@ -4,9 +4,11 @@
 #include "TankBarrel.h"
 
 
-void UTankBarrel::Elevate(float DegreesPerSecond)
+void UTankBarrel::Elevate(float RelativeSpeed)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Barrel->Elevate() called at speed %f"), DegreesPerSecond);
+	auto Time = GetWorld()->GetTimeSeconds();
+
+	UE_LOG(LogTemp, Warning, TEXT("%f: Barrel->Elevate() called at speed %f"),Time, RelativeSpeed);
 	//Work-out difference between current barrel reaction, and AimDirection move the barrel the right amount this frame, given
 }
 
