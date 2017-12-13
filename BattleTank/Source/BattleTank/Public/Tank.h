@@ -9,6 +9,7 @@
 //Forward Declerations
 class UTankAimingComponent;
 class UTankBarrel;
+class AProjectile;
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -41,12 +42,13 @@ private:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
-	UStaticMeshComponent* Barrel = nullptr;
-
 	UPROPERTY(EditAnywhere, Category = firing)
-		float LaunchSpeed = 4000; // sensible starting value of 10000/ms
+	float LaunchSpeed = 4000; // sensible starting value of 10000/ms
 
-
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBluePrint;
 	
+	//Local Barrel
+	UTankBarrel* Barrel = nullptr;
 	
 };
