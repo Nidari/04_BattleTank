@@ -7,6 +7,6 @@
 void UTankMovementComponent::IntendMoveFoward(float Throw)
 {
 	//auto Time = GetWorld()->GetTimeSeconds();
-	UE_LOG(LogTemp, Warning, TEXT("Intendo move forward throw: %f"), Throw);
+	UE_LOG(LogTemp, Warning, TEXT("Intend move forward throw: %f"), Throw);
 }
 
