@@ -17,7 +17,7 @@ ATank::ATank()
 
 	// No need to protect pointers as added to construction
 
-	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
+	//TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
 	
 }
 
@@ -26,6 +26,10 @@ ATank::ATank()
 
 void ATank::AimAT(FVector HitLocation)
 {
+	if (!TankAimingComponent)
+	{
+		return; //protecting the pointer
+	}
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 
 }
